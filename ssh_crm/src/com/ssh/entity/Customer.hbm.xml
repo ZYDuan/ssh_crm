@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-11-4 10:07:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.ssh.entity.Customer" table="t_customer">
+        <id name="cid" type="java.lang.Integer">
+            <column name="CID" />
+            <generator class="native" />
+        </id>
+        <property name="custName" type="java.lang.String">
+            <column name="CUSTNAME" />
+        </property>
+        <many-to-one name="dictCustLevel" class="com.ssh.entity.Dict" column="CUSTLEVEL">
+        	</many-to-one>
+        
+        <property name="custSource" type="java.lang.String">
+            <column name="CUSTSOURCE" />
+        </property>
+        <property name="custPhone" type="java.lang.String">
+            <column name="CUSTPHONE" />
+        </property>
+        <property name="custMobile" type="java.lang.String">
+            <column name="CUSTMOBILE" />
+        </property>
+        <set name="setLinkMan" table="LINKMAN" inverse="true" cascade="delete">
+            <key>
+                <column name="CLID" />
+            </key>
+            <one-to-many class="com.ssh.entity.LinkMan" />
+        </set>
+        <set name="setCusVisit">
+        		<key>
+        			<column name="CVID" />
+        		</key>
+        		<one-to-many class="com.ssh.entity.Visit" />
+        </set>
+    </class>
+</hibernate-mapping>

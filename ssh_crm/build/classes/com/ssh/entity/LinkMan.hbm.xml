@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-11-4 10:07:25 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <class name="com.ssh.entity.LinkMan" table="t_linkman">
+        <id name="linkid" type="java.lang.Integer">
+            <column name="LINKID" />
+            <generator class="native" />
+        </id>
+        <property name="lkmName" type="java.lang.String">
+            <column name="LKMNAME" />
+        </property>
+        <property name="lkmPhone" type="java.lang.String">
+            <column name="LKMPHONE" />
+        </property>
+        <property name="lkmGender" type="java.lang.String">
+            <column name="LKMGENDER" />
+        </property>
+        <property name="lkmMobile" type="java.lang.String">
+            <column name="LKMMOBILE" />
+        </property>
+        <many-to-one name="customer" class="com.ssh.entity.Customer" fetch="join">
+            <column name="CLID" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
